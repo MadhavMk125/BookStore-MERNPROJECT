@@ -27,6 +27,13 @@ const registerUser = async (req, res) => {
             password: hashedPassword,
             role
         });
+        const userResponse={
+            id_:user._id,
+            name:user.name,
+            email:user.email,
+            role:user.role,
+            createdAt:user.createdAt
+        };
           //check status
         res.status(201).json({
             success: true,
@@ -77,6 +84,13 @@ const loginUser = async (req, res) => {
                 expiresIn: "7d"
             }
         );
+        const userResponse = {
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            role: user.role,
+            createdAt: user.createdAt
+        };
 
         res.status(200).json({
             success: true,
