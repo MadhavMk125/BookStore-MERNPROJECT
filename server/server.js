@@ -5,6 +5,7 @@ const cors = require("cors");
 const connectDB = require("./config/connect");
 const userRoutes=require("./routes/userRoutes");
 const bookRoutes=require("./routes/bookRoutes");
+const orderRoutes=require("./routes/orderRoutes");
 dotenv.config();
 
 connectDB();
@@ -16,6 +17,7 @@ app.use(express.json());
 
 app.use("/api/users",userRoutes);
 app.use("/api/books",bookRoutes);
+app.use("/api/orders",orderRoutes);
 
 app.get("/", (req, res) => {
     res.send("BookStore Backend Running Successfully");
