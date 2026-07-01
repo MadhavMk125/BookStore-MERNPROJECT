@@ -4,7 +4,10 @@ const Book = require("../models/Book");
 const addBook = async (req, res) => {
     try {
 
-        const book = await Book.create(req.body);
+        const book = await Book.create({
+            ...req.body,
+            seller: req.user._id
+    });
 
         res.status(201).json({
             success: true,
@@ -282,19 +285,12 @@ const getCategoryBooks = async(req,res)=>{
 };
 
 module.exports={
-
     addBook,
-
     getBooks,
-
     getBook,
-
     updateBook,
-
     deleteBook,
-
     searchBooks,
-
     getCategoryBooks
 
 };
