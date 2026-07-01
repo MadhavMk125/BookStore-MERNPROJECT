@@ -12,6 +12,7 @@ const bookRoutes = require("./routes/bookRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 const sellerRoutes= require("./routes/sellerRoutes");
+const adminRoutes=require("./routes/adminRoutes");
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use("/api/books", bookRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/reviews", reviewRoutes);
 app.use("/api/seller",sellerRoutes);
+app.use("/api/admin",adminRoutes);
 
 const PORT = process.env.PORT || 8000;
 
