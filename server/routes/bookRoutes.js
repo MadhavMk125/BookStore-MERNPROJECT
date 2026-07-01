@@ -3,29 +3,44 @@ const express = require("express");
 const router = express.Router();
 
 const {
-
     addBook,
     getBooks,
-    getBookById,
+    getBook,
     updateBook,
     deleteBook,
     searchBooks,
-    getBooksByCategory
-
+    getCategoryBooks
 } = require("../controllers/BookController");
 
-router.post("/add", addBook);
+const protect = require("../middlewares/authMiddleware");
+const authorize = require("../middlewares/roleMiddleware");
 
+// Public Routes
 router.get("/", getBooks);
-
 router.get("/search", searchBooks);
+router.get("/category/:category", getCategoryBooks);
+router.get("/:id", getBook);
 
-router.get("/category/:category", getBooksByCategory);
+// Protected Routes
+router.post(
+    "/add",
+    protect,
+    authorize("seller", "admin"),
+    addBook
+);
 
-router.get("/:id", getBookById);
+router.put(
+    "/update/:id",
+    protect,
+    authorize("seller", "admin"),
+    updateBook
+);
 
-router.put("/update/:id", updateBook);
-
-router.delete("/delete/:id", deleteBook);
+router.delete(
+    "/delete/:id",
+    protect,
+    authorize("seller", "admin"),
+    deleteBook
+);
 
 module.exports = router;

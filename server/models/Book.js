@@ -4,17 +4,20 @@ const bookSchema = new mongoose.Schema(
 {
     title:{
         type:String,
-        required:true
+        required:true,
+        trim:true
     },
 
     author:{
         type:String,
-        required:true
+        required:true,
+        trim:true
     },
 
     category:{
         type:String,
-        required:true
+        required:true,
+        trim:true
     },
 
     description:{
@@ -24,7 +27,8 @@ const bookSchema = new mongoose.Schema(
 
     price:{
         type:Number,
-        required:true
+        required:true,
+        min:0
     },
 
     stock:{
@@ -35,6 +39,21 @@ const bookSchema = new mongoose.Schema(
     image:{
         type:String,
         default:""
+    },
+
+    seller:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User"
+    },
+
+    rating:{
+        type:Number,
+        default:0
+    },
+
+    numReviews:{
+        type:Number,
+        default:0
     }
 
 },
