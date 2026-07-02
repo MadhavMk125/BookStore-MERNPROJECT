@@ -3,10 +3,11 @@ const Book = require("../models/Book");
 // Add Book
 const addBook = async (req, res) => {
     try {
-
+        const image=req.file ? req.file.filename : "";
         const book = await Book.create({
             ...req.body,
-            seller: req.user._id
+            seller: req.user._id,
+            image
     });
 
         res.status(201).json({

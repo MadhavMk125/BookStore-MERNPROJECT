@@ -1,5 +1,5 @@
 const express = require("express");
-
+const upload=require("../middlewares/upload");
 const router = express.Router();
 
 const {
@@ -26,6 +26,7 @@ router.post(
     "/add",
     protect,
     authorize("seller", "admin"),
+    upload.single("image"),
     addBook
 );
 
