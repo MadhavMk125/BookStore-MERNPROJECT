@@ -1,19 +1,14 @@
 import { useEffect, useState } from "react";
-
 import { getBooks } from "../services/api";
-
 import BookCard from "../components/BookCard";
 
 function Books() {
 
     const [books, setBooks] = useState([]);
-
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-
         fetchBooks();
-
     }, []);
 
     const fetchBooks = async () => {
@@ -24,15 +19,11 @@ function Books() {
 
             setBooks(res.data.books);
 
-        }
-
-        catch (error) {
+        } catch (error) {
 
             console.log(error);
 
-        }
-
-        finally {
+        } finally {
 
             setLoading(false);
 
@@ -42,7 +33,11 @@ function Books() {
 
     if (loading) {
 
-        return <h3 className="text-center mt-5">Loading Books...</h3>;
+        return (
+            <h3 className="text-center mt-5">
+                Loading Books...
+            </h3>
+        );
 
     }
 
@@ -51,9 +46,7 @@ function Books() {
         <div className="container">
 
             <h2 className="mb-4">
-
                 All Books
-
             </h2>
 
             <div className="row">

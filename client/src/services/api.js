@@ -47,3 +47,25 @@ export const addReview = (data) =>
     API.post("/reviews/add", data);
 
 export default API;
+// SELLER
+export const getSellerBooks = () =>
+    API.get("/seller/books");
+
+export const addBook = (data) =>
+    API.post("/books/add", data);
+
+export const deleteBook = (id) =>
+    API.delete(`/books/delete/${id}`);
+// ================= ADMIN =================
+
+export const adminDashboard = () =>
+    API.get("/admin/dashboard");
+
+export const getUsers = () =>
+    API.get("/admin/users");
+
+export const getAllBooks = () =>
+    API.get("/admin/books");
+
+export const getAllOrders = () =>
+    API.get("/admin/orders");

@@ -4,13 +4,10 @@ import { myOrders } from "../services/api";
 function MyOrders() {
 
     const [orders, setOrders] = useState([]);
-
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-
         fetchOrders();
-
     }, []);
 
     const fetchOrders = async () => {
@@ -21,9 +18,7 @@ function MyOrders() {
 
             setOrders(res.data.orders);
 
-        }
-
-        catch (error) {
+        } catch (error) {
 
             console.log(error);
 
@@ -32,9 +27,7 @@ function MyOrders() {
                 "Unable to fetch orders"
             );
 
-        }
-
-        finally {
+        } finally {
 
             setLoading(false);
 
@@ -44,7 +37,11 @@ function MyOrders() {
 
     if (loading) {
 
-        return <h2 className="text-center mt-5">Loading Orders...</h2>;
+        return (
+            <h2 className="text-center mt-5">
+                Loading Orders...
+            </h2>
+        );
 
     }
 
@@ -53,9 +50,7 @@ function MyOrders() {
         <div className="container mt-4">
 
             <h2 className="mb-4">
-
                 My Orders
-
             </h2>
 
             {
@@ -91,17 +86,17 @@ function MyOrders() {
 
                                         <div className="card-body">
 
-                                            <h5>
-
+                                            <h4>
                                                 {order.book.title}
-
-                                            </h5>
+                                            </h4>
 
                                             <hr />
 
                                             <p>
 
-                                                <strong>Author :</strong>{" "}
+                                                <strong>Author :</strong>
+
+                                                {" "}
 
                                                 {order.book.author}
 
@@ -109,7 +104,9 @@ function MyOrders() {
 
                                             <p>
 
-                                                <strong>Quantity :</strong>{" "}
+                                                <strong>Quantity :</strong>
+
+                                                {" "}
 
                                                 {order.quantity}
 
@@ -117,7 +114,9 @@ function MyOrders() {
 
                                             <p>
 
-                                                <strong>Total :</strong>{" "}
+                                                <strong>Total :</strong>
+
+                                                {" "}
 
                                                 ₹{order.totalPrice}
 
@@ -125,15 +124,23 @@ function MyOrders() {
 
                                             <p>
 
-                                                <strong>Status :</strong>{" "}
+                                                <strong>Status :</strong>
 
-                                                {order.orderStatus}
+                                                {" "}
+
+                                                <span className="badge bg-success">
+
+                                                    {order.orderStatus}
+
+                                                </span>
 
                                             </p>
 
                                             <p>
 
-                                                <strong>Payment :</strong>{" "}
+                                                <strong>Payment :</strong>
+
+                                                {" "}
 
                                                 {order.paymentMethod}
 
