@@ -4,9 +4,17 @@ node_modules/
 # Environment variables
 .env
 
+# Build folders
+dist/
+build/
+
 # Logs
+*.log
 npm-debug.log*
 
-# Operating System files
+# OS files
 .DS_Store
 Thumbs.db
+
+# VS Code
+.vscode

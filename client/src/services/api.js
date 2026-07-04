@@ -52,7 +52,11 @@ export const getSellerBooks = () =>
     API.get("/seller/books");
 
 export const addBook = (data) =>
-    API.post("/books/add", data);
+    API.post("/books/add", data,{
+        headers:{
+            "Content-Type": "multipart/form-data"
+        }
+    });
 
 export const deleteBook = (id) =>
     API.delete(`/books/delete/${id}`);

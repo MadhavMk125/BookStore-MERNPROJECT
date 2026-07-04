@@ -13,9 +13,19 @@ function Users() {
 
     const loadUsers = async () => {
 
-        const res = await getUsers();
+        try {
 
-        setUsers(res.data.users);
+            const res = await getUsers();
+
+            setUsers(res.data.users);
+
+        }
+
+        catch (error) {
+
+            console.log(error);
+
+        }
 
     };
 
@@ -23,11 +33,15 @@ function Users() {
 
         <div className="container">
 
-            <h2>Users</h2>
+            <h2 className="mb-4">
 
-            <table className="table table-bordered">
+                Manage Users
 
-                <thead>
+            </h2>
+
+            <table className="table table-striped table-bordered shadow">
+
+                <thead className="table-dark">
 
                     <tr>
 
@@ -45,7 +59,7 @@ function Users() {
 
                     {
 
-                        users.map(user=>(
+                        users.map((user) => (
 
                             <tr key={user._id}>
 
@@ -53,7 +67,21 @@ function Users() {
 
                                 <td>{user.email}</td>
 
-                                <td>{user.role}</td>
+                                <td>
+
+                                    <span
+                                        className={`badge ${
+                                            user.role === "admin"
+                                                ? "bg-danger"
+                                                : user.role === "seller"
+                                                ? "bg-warning text-dark"
+                                                : "bg-primary"
+                                        }`}
+                                    >
+                                        {user.role}
+                                    </span>
+
+                                </td>
 
                             </tr>
 

@@ -1,7 +1,5 @@
 import { useState } from "react";
-
 import { useNavigate } from "react-router-dom";
-
 import { addBook } from "../../services/api";
 
 function AddBook() {
@@ -9,30 +7,28 @@ function AddBook() {
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
-
         title: "",
-
         author: "",
-
         category: "",
-
         description: "",
-
         price: "",
-
         stock: ""
-
     });
+
+    const [image, setImage] = useState(null);
 
     const handleChange = (e) => {
 
         setForm({
-
             ...form,
-
             [e.target.name]: e.target.value
-
         });
+
+    };
+
+    const handleImage = (e) => {
+
+        setImage(e.target.files[0]);
 
     };
 
@@ -42,7 +38,21 @@ function AddBook() {
 
         try {
 
-            await addBook(form);
+            const formData = new FormData();
+
+            Object.keys(form).forEach((key) => {
+
+                formData.append(key, form[key]);
+
+            });
+
+            if (image) {
+
+                formData.append("image", image);
+
+            }
+
+            await addBook(formData);
 
             alert("Book Added Successfully");
 
@@ -100,18 +110,31 @@ function AddBook() {
 
                         <input
                             className="form-control mb-3"
-                            name="price"
                             type="number"
+                            name="price"
                             placeholder="Price"
                             onChange={handleChange}
                         />
 
                         <input
                             className="form-control mb-3"
-                            name="stock"
                             type="number"
+                            name="stock"
                             placeholder="Stock"
                             onChange={handleChange}
+                        />
+
+                        <label className="form-label">
+
+                            Book Image
+
+                        </label>
+
+                        <input
+                            className="form-control mb-3"
+                            type="file"
+                            accept="image/*"
+                            onChange={handleImage}
                         />
 
                         <button className="btn btn-success">

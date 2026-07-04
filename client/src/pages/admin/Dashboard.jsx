@@ -7,9 +7,7 @@ function Dashboard() {
     const [stats, setStats] = useState(null);
 
     useEffect(() => {
-
         loadDashboard();
-
     }, []);
 
     const loadDashboard = async () => {
@@ -32,7 +30,15 @@ function Dashboard() {
 
     if (!stats) {
 
-        return <h3 className="text-center mt-5">Loading...</h3>;
+        return (
+
+            <div className="text-center mt-5">
+
+                <h3>Loading Dashboard...</h3>
+
+            </div>
+
+        );
 
     }
 
@@ -50,11 +56,11 @@ function Dashboard() {
 
                 <div className="col-md-3">
 
-                    <div className="card text-center shadow">
+                    <div className="card shadow text-center">
 
                         <div className="card-body">
 
-                            <h5>Users</h5>
+                            <h5>Total Users</h5>
 
                             <h2>{stats.totalUsers}</h2>
 
@@ -66,11 +72,11 @@ function Dashboard() {
 
                 <div className="col-md-3">
 
-                    <div className="card text-center shadow">
+                    <div className="card shadow text-center">
 
                         <div className="card-body">
 
-                            <h5>Books</h5>
+                            <h5>Total Books</h5>
 
                             <h2>{stats.totalBooks}</h2>
 
@@ -82,11 +88,11 @@ function Dashboard() {
 
                 <div className="col-md-3">
 
-                    <div className="card text-center shadow">
+                    <div className="card shadow text-center">
 
                         <div className="card-body">
 
-                            <h5>Orders</h5>
+                            <h5>Total Orders</h5>
 
                             <h2>{stats.totalOrders}</h2>
 
@@ -98,11 +104,11 @@ function Dashboard() {
 
                 <div className="col-md-3">
 
-                    <div className="card text-center shadow">
+                    <div className="card shadow text-center">
 
                         <div className="card-body">
 
-                            <h5>Sellers</h5>
+                            <h5>Total Sellers</h5>
 
                             <h2>{stats.totalSellers}</h2>
 

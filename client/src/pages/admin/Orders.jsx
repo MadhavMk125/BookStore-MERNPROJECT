@@ -1,42 +1,61 @@
-import { useEffect,useState } from "react";
-
+import { useEffect, useState } from "react";
 import { getAllOrders } from "../../services/api";
 
-function Orders(){
+function Orders() {
 
-    const [orders,setOrders]=useState([]);
+    const [orders, setOrders] = useState([]);
 
-    useEffect(()=>{
+    useEffect(() => {
 
         loadOrders();
 
-    },[]);
+    }, []);
 
-    const loadOrders=async()=>{
+    const loadOrders = async () => {
 
-        const res=await getAllOrders();
+        try {
 
-        setOrders(res.data.orders);
+            const res = await getAllOrders();
+
+            setOrders(res.data.orders);
+
+        }
+
+        catch (error) {
+
+            console.log(error);
+
+        }
 
     };
 
-    return(
+    return (
 
         <div className="container">
 
-            <h2>Orders</h2>
+            <h2 className="mb-4">
 
-            <table className="table table-bordered">
+                Manage Orders
 
-                <thead>
+            </h2>
+
+            <table className="table table-striped table-bordered shadow">
+
+                <thead className="table-dark">
 
                     <tr>
 
-                        <th>User</th>
+                        <th>Customer</th>
 
                         <th>Book</th>
 
+                        <th>Quantity</th>
+
+                        <th>Total</th>
+
                         <th>Status</th>
+
+                        <th>Payment</th>
 
                     </tr>
 
@@ -46,15 +65,49 @@ function Orders(){
 
                     {
 
-                        orders.map(order=>(
+                        orders.map((order) => (
 
                             <tr key={order._id}>
 
-                                <td>{order.user.name}</td>
+                                <td>
 
-                                <td>{order.book.title}</td>
+                                    {order.user?.name}
 
-                                <td>{order.orderStatus}</td>
+                                </td>
+
+                                <td>
+
+                                    {order.book?.title}
+
+                                </td>
+
+                                <td>
+
+                                    {order.quantity}
+
+                                </td>
+
+                                <td>
+
+                                    ₹{order.totalPrice}
+
+                                </td>
+
+                                <td>
+
+                                    <span className="badge bg-success">
+
+                                        {order.orderStatus}
+
+                                    </span>
+
+                                </td>
+
+                                <td>
+
+                                    {order.paymentMethod}
+
+                                </td>
 
                             </tr>
 
