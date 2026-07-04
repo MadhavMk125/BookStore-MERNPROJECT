@@ -309,10 +309,13 @@ This project demonstrates practical knowledge of:
 
 ---
 
-## 👨‍💻 Authors
-**Akhila M,**
-**Nandhini M N,**
-**Madhav Krishna Yadav Mandapati**
+## 👥 Team Members
+
+| Name | Role |
+|------|------|
+| Madhav Krishna Yadav Mandapati |  Database |
+| M N Nandini | Frontend Development |
+| M Akhila | Backend Development |
 
 - GitHub: https://github.com/MadhavMk125
 
