@@ -313,7 +313,7 @@ This project demonstrates practical knowledge of:
 
 | Name | Role |
 |------|------|
-| Madhav Krishna Yadav Mandapati |  Database |
+| Madhav Krishna Yadav Mandapati |  Frontend Development,Backend Development,Database Management |
 | M N Nandini | Frontend Development |
 | M Akhila | Backend Development |
 
